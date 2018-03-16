@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>EventNut</title>
+	<link rel="stylesheet" href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.common-bootstrap.min.css">
+	<link rel="stylesheet" href="http://cdn.kendostatic.com/2014.1.318/styles/kendo.bootstrap.min.css">
+	<link rel="stylesheet" href="likely.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/themes/theme-light.css"> <!-- switcher light/dark theme-dark.css -->
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,600,300,800" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="http://cdn.kendostatic.com/2014.3.1316/js/kendo.all.min.js"></script>
+	<script type="text/javascript" src="js/likely.js"></script>
+	<script type="text/javascript" src="js/jquery.touchslider-2.0.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body class="theme-01 footer-shortened template-party">
+	<!-- top banner begin -->
+	<section class="top-banner">
+		<div class="inner">
+			<div class="wrap">
+				<p>The account has not been confirmed. You are not able to published events <a href="#">Resend</a></p>
+			</div>
+		</div>
+	</section>
+	<!-- top banner end -->
+	<!-- header begin -->
+	<header id="header" role="banner">
+		<!-- inner begin -->
+		<div class="inner">
+			<!-- logo begin -->
+			<h1 id="logo" title="EventNut">
+				<a href="http://events.checkbox.com/">
+					<img src="svg/eventnut-logo.svg" alt="EventNut" />
+				</a>
+			</h1>
+			<!-- logo end -->
+			<!-- navigation panel begin -->
+			<nav class="nav-panel">
+				<!-- toggle begin -->
+				<input id="bs-toggle" class="toggle" type="checkbox" />
+				<label for="bs-toggle" class="label-toggle" id="label-toggle" /></label>
+				<!-- toggle end -->
+				<!-- navigation holder begin -->
+				<div class="nav-holder">
+					<!-- button begin -->
+					<div class="button"><a href="http://events.checkbox.com/eventsmanagement/create">Create Event</a></div>
+					<!-- button end -->
+					<!-- navigation begin -->
+					<ul class="nav">
+						<li><a href="http://events.checkbox.com/">Browse events</a></li>
+						<li><a href="#">Pricing</a></li>
+					</ul>
+					<form novalidate action="/logout" id="logoutForm" method="post" style="display:inline;"><input name="__RequestVerificationToken" value="OPWQx_cSGjn1TFctrj9KWzqid3xg1Z_AOGBMvUBF-tmBq01igz6rPFhRF8yAPHMAh9NdMWCOJMMTN7zxwg006Cd4tHxtWV6Z89itBNIoGvaN_wmNAP4Qitrm_EcPuMBbFhS_fXTRgyDKRXnyjxtX4w2" type="hidden">
+						<!-- account holder begin -->
+						<div class="account-holder">
+							<!-- account info begin -->
+							<div class="account-info">
+								<div class="account-photo"></div>
+								<span class="account-name">Marina Isakova</span>
+							</div>
+							<!-- account info end -->
+							<!-- account nav begin -->
+							<ul class="account-nav">
+								<li><a href="http://events.checkbox.com/eventsmanagement">My Events</a></li>
+								<li><a href="http://events.checkbox.com/account/security">Settings</a></li>
+								<li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
+							</ul>
+							<!-- account nav end -->
+						</div>
+						<!-- account holder end -->
+					</form>
+					<script>
+					$("#accountName").click(function (e) {
+						if ($(window).width() < 767) {
+							window.location.href = "/account/profile";
+					
+						} else {
+							$(".accountMenu").show();
+						}
+						e.stopPropagation();
+					});
+					$("body").click(function () {
+						$(".accountMenu").hide();
+					});
+					</script>
+					<!-- navigation end-->
+				</div>
+				<!-- navigation holder end -->
+			</nav>
+			<!-- navigation panel end -->
+		</div>
+		<!-- inner end -->
+	</header>
+	<!-- header end -->
+	<!-- site body begin -->
+	<div id="site-body">
+		<!-- event creator begin -->
+		<div class="event-creator">
+			<!-- event editor begin -->
+			<div class="event-editor">
+				<!-- top section begin -->
+				<div id="top-section"> <!-- for image edit class="image-edit-status" -->
+					<!-- extra action panel begin -->
+					<div class="extra-action-panel">
+						<!-- inner begin -->
+						<div class="inner">
+							<!-- wrap section begin -->
+							<div class="wrap-section">
+								<!-- main section begin -->
+								<div class="main-section">
+									<!-- sub navigation begin -->
+									<ul class="sub-nav">
+										<li class="sub-nav-item active"><a href="#" class="ico-editor"><span>Editor</span></a></li>
+										<li class="sub-nav-item"><a href="#" class="ico-appearance btn-popup" data-popup="popup-template"><span>Appearance</span></a></li>
+										<li class="sub-nav-item"><a href="#" class="ico-setup"><span>Setup</span></a></li>
+										<li class="sub-nav-item"><a href="#" class="ico-registration"><span>Registration fields</span></a></li>
+										<li class="sub-nav-item"><a href="#" class="ico-badges"><span>Badges</span></a></li>
+										<li class="sub-nav-item"><a href="#" class="ico-attendees"><span>Attendees</span></a></li>
+									</ul>
+									<!-- sub navigation end -->
+								</div>
+								<!-- main section end -->
+								<!-- sub section begin -->
+								<div class="sub-section">
+									<!-- action list begin -->
+									<ul class="action-list">
+										<li class="button"><a href="#" class="minor disabled">Save</a></li>
+										<li class="button"><a href="#" class="minor" id="btn-preview">Preview</a></li>
+										<li class="button">
+											<a href="#">
+												Publish
+											</a>
+										</li>
+									</ul>
+									<!-- action list end -->
+								</div>
+								<!-- sub section end -->
+							</div>
+							<!-- wrap section end -->
+						</div>
+						<!-- inner end -->
+						<!-- sub nav popup begin -->
+						<div class="sub-nav-popup" id="popup-template">
+							<div class="sub-nav-popup-inner">
+								<!-- inner begin -->
+								<div class="inner">
+									<!-- template selector begin -->
+									<div class="template-selector gallery-holder">
+										<!-- wrapp begin -->
+										<div class="wrapp">
+											<div class="frame">
+												<div class="wrap-section">
+													<!-- main section begin -->
+													<div class="main-section item">
+														<!-- swatches begin -->
+														<div class="swatches">
+															<h3>Template:</h3>
+															<!-- templates begin -->
+															<ul class="templates">
+																<li class="party active"><a href="#">Party<span><i></i></span></a></li>
+																<li class="conference"><a href="#">Conference<span><i></i></span></a></li>
+																<li class="workshop"><a href="#">Workshop<span><i></i></span></a></li>
+																<li class="legacy"><a href="#">Legacy<span><i></i></span></a></li>
+															</ul>
+															<!-- templates end -->
+														</div>
+														<!-- swatches end -->
+													</div>
+													<!-- main section begin -->
+													<!-- sub section begin -->
+													<div class="sub-section item">
+														<!-- swatches begin -->
+														<div class="swatches">
+															<h3>Color schemes:</h3>
+															<!-- theme begin -->
+															<ul class="themes">
+																<li class="theme-01"><a href="#">Schemes 1</a></li>
+																<li class="theme-02"><a href="#">Schemes 2</a></li>
+																<li class="theme-03"><a href="#">Schemes 3</a></li>
+																<li class="theme-04"><a href="#">Schemes 4</a></li>
+																<li class="theme-05"><a href="#">Schemes 5</a></li>
+																<li class="theme-06"><a href="#">Schemes 6</a></li>
+															</ul>
+															<!-- theme end -->
+														</div>
+														<!-- swatches end -->
+													</div>
+													<!-- sub section end -->
+												</div>
+											</div>
+										</div>
+										<!-- wrapp end -->
+										<div class="control"></div>
+									</div>
+									<!-- template selector end -->
+								</div>
+								<!-- inner end -->
+							</div>
+						</div>
+						<!-- sub nav popup end -->
+					</div>
+					<!-- extra action panel end -->
+					<!-- event holder begin -->
+					<div class="event-holder">
+						<!-- inner begin -->
+						<div class="inner">
+							<!-- create event cover begin -->
+							<div class="create-event-cover">
+								<!-- dropbox begin -->
+								<div class="dropbox">
+									<div class="dropbox-inner">
+										<span class="cover-name"><span>conference_bg.jpg</span><a href="#" target="_blank" rel="nofollow" class="btn-close"></a></span>
+										<!-- button edit image begin -->
+										<a href="#" class="btn-edit btn-popup" id="editCoverBtn" data-popup="popup-image-editor">Edit <i>image</i></a>
+										<!-- button edit image end -->
+									</div>
+								</div>
+								<!-- dropbox end -->
+							</div>
+							<!-- create event cover end -->
+							<!-- event wrap begin -->
+							<div class="event-wrap">
+								<!-- event main info begin -->
+								<div class="event-main-info">
+									<!-- event title begin -->
+									<h1 class="event-main-title" data-role="contenteditable" data-placeholder="Add your event title here" data-bind="value: eventSettings.Name" contenteditable="true"><span class="placeholder">Add your event title here</span></h1>
+									<!-- event title end -->
+									<!-- event summary begin -->
+									<div class="event-summary" data-role="contenteditable" data-placeholder="Place your event short summary here" data-bind="value: eventSettings.Summary" contenteditable="true">Leading experts in 3D graphics, special effects, video post-production</div>
+									<!-- event summary end -->
+								</div>
+								<!-- event main info end -->
+								<!-- date/time/location holder begin -->
+								<div class="dtl-holder">
+									<div class="dtl-inner">
+										<!-- date time holder begin -->
+										<div class="date-time-holder">
+											<div class="date-time-inner">
+												<!-- date holder begin -->
+												<div class="date-holder btn-popup-settings merge-month" data-popup="popup-date">
+													<!-- date start begin -->
+													<div class="start" data-bind="click:openDatePopup">
+														<span data-bind="text: startDateDayText"><i>Apr</i> <span class="date-day">03</span></span>
+													</div>
+													<!-- date start end -->
+													<!-- date end begin -->
+													<div class="end" data-bind="click:openDatePopup, visible: isEndDateVisible">
+														<span data-bind="text: endDateDayText"><i>Mar</i> <span class="date-day">03</span></span>
+													</div>
+													<!-- date end end -->
+												</div>
+												<!-- date holder end -->
+												<!-- time holder begin -->
+												<div class="time-holder btn-popup-settings" data-popup="popup-time">
+													<!-- time start begin -->
+													<div class="start" data-bind="click:openTimePopup"><span data-bind="text: startDateTimeText">12:45 <i class="time-zone">PM</i></span></div>
+													<!-- time start end -->
+													<!-- time end begin -->
+													<div class="end" data-bind="click:openTimePopup, visible: isEndDateVisible"><span data-bind="text: endDateTimeText">12:45 <i class="time-zone">PM</i></span></div>
+													<!-- time end end -->
+												</div>
+												<!-- time holder end -->
+												<a href="#">Delete end date/time</a>
+											</div>
+										</div>
+										<!-- date time holder begin -->
+										<!-- location holder begin -->
+										<div class="location-holder">
+											<!-- venue begin -->
+											<div class="venue">
+												<h3 data-role="contenteditable" data-placeholder="Enter venue name here" contenteditable="true"><span class="placeholder"><span class="icon">Enter venue name here</span></span></h3>
+											</div>
+											<!-- venue end -->
+											<!-- address begin -->
+											<div class="address btn-popup-settings" data-popup="popup-location">
+												<address data-role="contenteditable" data-placeholder="1698 W Adele St, Vancouver, British Columbia, Canada" contenteditable="true">1698 W Adele St, Vancouver, British Columbia, Canada</address>
+												<!-- place search begin -->
+												<div id="popup-address" class="popup-settings-holder place-search">
+													<div class="popup-settings-inner">
+														<div class="popup-settings-wrap">
+															<p><a href="#" id="customeAddressBtn">Enter custom address</a></p>
+															<!-- autocomplete results begin -->
+															<ul class="autocomplete-results">
+																<li><a href="#"><span>1698 W Adele St, Vancouver,  text text text text</span></a></li>
+																<li><a href="#"><span>1698 W Adele St, Vancouver,  text text</span></a></li>
+															</ul>
+															<!-- autocomplete results end -->
+															<!-- logo holder begin -->
+															<div class="logo-holder">
+																<img src="../images/powered-by-google.png" alt="" />
+															</div>
+															<!-- logo holder end -->
+														</div>
+													</div>
+												</div>
+												<!-- place search end -->
+											</div>
+											<!-- address end -->
+										</div>
+										<!-- location holder end -->
+									</div>
+								</div>
+								<!-- date/time/location holder end -->
+								<div class="popups-settings-wrap">
+									<!-- date popup settings holder -->
+									<div id="popup-date" class="popup-settings-holder calendar-holder">
+										<a href="#" class="btn-close"></a>
+										<div class="popup-settings-inner">
+											<div class="popup-settings-wrap main-calendar">
+												<div id="calendar"></div>
+											</div>
+											<script>
+												$("#calendar").kendoCalendar();
+											</script>
+										</div>
+									</div>
+									<!-- date popup settings end -->
+									<!-- time popup settings holder -->
+									<div id="popup-time" class="popup-settings-holder timepicker-holder">
+										<a href="#" class="btn-close"></a>
+										<!-- popup settings inner begin -->
+										<div class="popup-settings-inner">
+											<!-- popup settings wrap begin -->
+											<div class="popup-settings-wrap">
+												<!-- timepicker begin -->
+												<div id="timepicker" class="timepicker" data-role="alttimepicker" data-template="alt-timepicker-template">
+													<!-- timepicker inner begin -->
+													<div class="timepicker-inner">
+														<!-- timepicker display begin -->
+														<div class="timepicker-display">
+															<div>
+																<a href="#" class="alttimepicker-hours-up-button">+</a>
+															</div>
+															<div>
+																<span data-role="contenteditable" class="alttimepicker-hours-value" contenteditable="true">11</span>
+															</div>
+															<div>
+																<a href="#" class="alttimepicker-hours-down-button">-</a>
+															</div>
+														</div>
+														<!-- timepicker display end -->
+														<!-- timepicker display begin -->
+														<div class="timepicker-display">
+															<div>
+																<a href="#" class="alttimepicker-minutes-up-button">+</a>
+															</div>
+															<div>
+																<span>39</span>
+															</div>
+															<div>
+																<a href="#" class="alttimepicker-minutes-down-button">-</a>
+															</div>
+														</div>
+														<!-- timepicker display end -->
+														<!-- hour period switcher begin -->
+														<div class="switcher">
+															<span>AM</span>
+															<input id="hourperiod-switcher" type="checkbox" class="switch" />
+															<label for="hourperiod-switcher" /></label>
+															<span>PM</span>
+														</div>
+														<!-- hour period switcher end -->
+													</div>
+													<!-- timepicker inner end -->
+												</div>
+												<!-- timepicker end -->
+											</div>
+											<!-- popup settings wrap end -->
+										</div>
+										<!-- popup settings inner end -->
+									</div>
+									<!-- time popup settings end -->
+									<!-- location popup settings holder -->
+									<div id="popup-location" class="popup-settings-holder popup-map">
+										<a href="#" class="btn-close"></a>
+										<div class="popup-settings-inner">
+											<!-- map holder begin -->
+											<div id="map" class="map-holder">
+												
+											</div>
+											<!-- map holder end -->
+										</div>
+									</div>
+									<!-- location popup settings end -->
+									<!-- custome address popup holder begin -->
+									<div class="popup-holder" id="popupCustomeAddress">
+										<!-- popup content begin -->
+										<div class="popup-content">
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>Address line 1</label>
+												<input type="text" value="" class="text" placeholder="" />
+											</div>
+											<!-- control box end -->
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>Address line 2</label>
+												<input type="text" value="" class="text" placeholder="" />
+											</div>
+											<!-- control box end -->
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>City</label>
+												<input type="text" value="" class="text" placeholder="" />
+											</div>
+											<!-- control box end -->
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>State</label>
+												<input type="text" value="" class="text" placeholder="" />
+											</div>
+											<!-- control box end -->
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>Zip-code</label>
+												<input type="text" value="" class="text" placeholder="" />
+											</div>
+											<!-- control box end -->
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>Cpuntry</label>
+												<input type="text" value="" class="text" placeholder="" />
+											</div>
+											<!-- control box end -->
+											<!-- action list begin -->
+											<ul class="action-list">
+												<li class="button"><a href="#" class="minor btn-close-popup">Cancel</a></li>
+												<li class="button"><a href="#">Save</a></li>
+											</ul>
+											<!-- action list end -->
+										</div>
+										<!-- popup content end -->
+									</div>
+									<!-- custome address popup holder end -->
+								</div>
+							</div>
+							<!-- event wrap end -->
+						</div>
+						<!-- inner end -->
+					</div>
+					<!-- event holder end -->
+					<!-- cover begin -->
+					<div class="cover"> <!-- for edit status must add "edit-status" class -->
+						<div class="cover-move">
+							<div class="cover-scale">
+							</div>
+						</div>
+						<div class="mask-opacity"></div>
+					</div>
+					<!-- cover end -->
+					<!-- popup image editor begin -->
+					<div class="sub-nav-popup image-editor-panel" id="popup-image-editor">
+						<div class="sub-nav-popup-inner">
+							<!-- wrap action begin -->
+							<div class="wrap-action">
+								<!-- main action begin -->
+								<div class="main-action">
+									<!-- image edit actions begin -->
+									<ul class="image-edit-actions">
+										<li class="ico-fit disabled"></li>
+										<li class="ico-zoom-out"></li>
+										<li class="ico-zoom-in"></li>
+									</ul>
+									<!-- image edit actions end -->
+								</div>
+								<div class="main-action">
+									<div class="slider-holder">
+										<div class="slider">
+											<label class="k-filter-label">Blur</label>
+											<input type="text" value="0" class="slider-el" />
+										</div>
+									</div>
+									<div class="slider-holder">
+										<div class="slider">
+											<label class="k-filter-label">Colour Tint</label>
+											<input type="text" value="0" class="slider-el" />
+										</div>
+									</div>
+								</div>
+								<!-- main action begin -->
+								<!-- sub action begin -->
+								<div class="sub-action">
+									<!-- action list begin -->
+									<ul class="action-list">
+										<li class="button"><a href="#" class="minor btn-close-popup">Cancel</a></li>
+										<!-- <li class="button"><a href="#">Save</a></li>-->
+									</ul>
+									<!-- action list end -->
+								</div>
+								<!-- sub action end -->
+							</div>
+							<!-- wrap section end -->
+						</div>
+					</div>
+					<!-- popup image editor end -->
+				</div>
+				<!-- top section end -->
+				<!--<div data-role="draggable" style="padding-top: 52px; min-width: 90px; min-height: 50px; display: block; left: 414px; top: 619px; z-index: 10003;" class="k-widget k-window"><div style="margin-top: -52px;" class="k-window-titlebar k-header">&nbsp;<span class="k-window-title">Insert image</span><div class="k-window-actions"><a role="button" href="#" class="k-window-action k-link"><span role="presentation" class="k-icon k-i-close">Close</span></a></div></div>
+				<div style="" tabindex="0" data-role="window" class="k-editor-dialog k-popup-edit-form k-edit-form-container k-window-content k-content">
+					<div class="k-edit-label"><label for="k-editor-image-url">Web address</label></div><div class="k-edit-field">
+					<input class="k-input k-textbox" id="k-editor-image-url" type="text"></div><div class="k-edit-label"><label for="k-editor-image-title">Alternate text</label></div><div class="k-edit-field"><input class="k-input k-textbox" id="k-editor-image-title" type="text"></div><div class="k-edit-label"><label for="k-editor-image-width">Width (px)</label></div><div class="k-edit-field"><input class="k-input k-textbox" id="k-editor-image-width" type="text"></div><div class="k-edit-label"><label for="k-editor-image-height">Height (px)</label></div><div class="k-edit-field"><input class="k-input k-textbox" id="k-editor-image-height" type="text"></div><div class="k-edit-buttons k-state-default"><button class="k-dialog-insert k-button k-primary">Insert</button><button class="k-dialog-close k-button">Cancel</button></div></div></div>
+				<div data-role="draggable" style="padding-top: 52px; min-width: 90px; min-height: 50px; display: block; left: 314px; top: 1035.5px; z-index: 10003;" class="k-widget k-window">
+					<div style="margin-top: -52px;" class="k-window-titlebar k-header">&nbsp;<span class="k-window-title">View HTML</span>
+					<div class="k-window-actions"><a role="button" href="#" class="k-window-action k-link"><span role="presentation" class="k-icon k-i-close">Close</span></a></div></div>
+					<div style="" tabindex="0" data-role="window" class="k-editor-dialog k-popup-edit-form k-edit-form-container k-viewhtml-dialog k-window-content k-content">
+						<textarea class="k-editor-textarea k-input"></textarea>
+						<div class="k-edit-buttons k-state-default">
+							<button class="k-dialog-update k-button k-primary">Update</button>
+							<button class="k-dialog-close k-button">Cancel</button>
+						</div>
+					</div>
+				</div>-->
+				<!-- content begin -->
+				<div id="content" role="main">
+					<!-- inner begin -->
+					<div class="inner">
+						<!-- wrap begin -->
+						<div class="wrap">
+							<!-- tickets holder begin -->
+							<div class="tickets-holder">
+								<!-- tickets inner begin -->
+								<div class="tickets-inner">
+									<!-- ticket container begin -->
+									<div class="ticket-container">
+										<!-- ticket list begin -->
+										<ul class="ticket-list">
+											<!-- ticket item begin -->
+											<li class="ticket-item">
+												<!-- ticket wrap begin -->
+												<div class="ticket-wrap">
+													<!-- ticket main info begin -->
+													<div class="ticket-main-info">
+														<div class="ticket-price">$10.00</div>
+														<dl>
+															<dt>Admission + CD</dt>
+															<dd>Special limited</dd>
+														</dl>
+													</div>
+													<!-- ticket main info end -->
+													<!-- ticket sub info begin -->
+													<div class="ticket-sub-info">
+														<!-- icons menu begin -->
+														<ul class="icons-menu">
+															<li><a href="#" class="ico-edit" rel="nofollow">edit</a></li>
+															<li><a href="#" class="ico-visibility" rel="nofollow">visibility</a></li>
+															<li><a href="#" class="ico-delete" rel="nofollow">delete</a></li>
+														</ul>
+														<!-- icons menu end -->
+														<span>900 sold</span>
+													</div>
+													<!-- ticket sub info end -->
+												</div>
+												<!-- ticket wrap end -->
+												<!-- reorder begin -->
+												<span class="ico-reorder"></span>
+												<!-- reorder end -->
+												<!-- message begin -->
+												<div class="message">
+													<div class="message-wrap">
+														<div class="message-inner">
+															<p>Ticket was deleted. <a href="#" class="undo-delete">Undo delete</a></p>
+														</div>
+													</div>
+												</div>
+												<!-- message end -->
+											</li>
+											<!-- ticket item end -->
+										</ul>
+										<!-- ticket list end -->
+										<!--<a href="#" class="toggle-link-expand">Show all tickets</a>
+										<a href="#" class="toggle-link-collapse">Hide all tickets</a>-->
+									</div>
+									<!-- ticket container end -->
+									<!-- ticket action holder begin -->
+									<div class="ticket-action-holder">
+										<span id="open-tickets">Event tickets here</span>
+										<div class="button">
+											<a href="#" id="addTicketBtn" rel="nofollow">Add</a>
+										</div>
+									</div>
+									<!-- ticket action holder end -->
+								</div>
+								<!-- tickets inner end -->
+								<!-- popup holder begin -->
+								<div class="popup-holder" id="popupAddTicket">
+									<!-- popup header begin -->
+									<div class="popup-header k-window-titlebar">
+										<!-- switcher begin -->
+										<div class="switcher">
+											<span>Add tickets</span>
+											<input id="add-tickets" type="checkbox" class="switch" checked />
+											<label for="add-tickets" /></label>
+											<span>Add add-ons</span>
+										</div>
+										<!-- switcher end -->
+										<a href="#" class="btn-close btn-close-popup"></a>
+									</div>
+									<!-- popup header end -->
+									<!-- popup content begin -->
+									<div class="popup-content">
+										<!-- controls row begin -->
+										<div class="controls-row">
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>Title</label>
+												<input aria-invalid="true" class="text" name="Name" data-bind="value:Name" required validationmessage="Title is required" type="text">
+												<span role="alert" id="Name_validationMessage" data-valmsg-for="Name" data-for="Name" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg field-validation-error"><span class="k-icon k-warning"> </span> Title is required</span>
+											</div>
+											<!-- control box end -->
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>Description</label>
+												<input type="text" value="" class="text" placeholder="For those who buy in advance" />
+											</div>
+											<!-- control box end -->
+											<!-- control box begin -->
+											<div class="group-control-box">
+												<div class="control-box">
+													<label>Price</label>
+													<span class="k-widget k-numerictextbox text" style=""><span class="k-numeric-wrap k-state-default k-expand-padding"><input aria-readonly="false" aria-disabled="false" style="display: inline;" tabindex="0" class="k-formatted-value text k-input" type="text"><input aria-readonly="false" aria-disabled="false" aria-valuenow="" aria-valuemin="0" style="display: none;" role="spinbutton" class="text k-input" data-bind="value:Price" data-role="numerictextbox" data-spinners="false" data-type="number" data-min="0" data-format="c0" name="Price" required validationmessage="Price is required" type="text"><span style="display: none;" class="k-select"><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-n" title="Increase value">Increase value</span></span><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-s" title="Decrease value">Decrease value</span></span></span></span></span>
+												<span class="k-invalid-msg" data-for="Price"></span>
+											</div>
+											<!-- control box end -->
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>Q-ty</label>
+												<span class="k-widget k-numerictextbox text" style="">
+													<span class="k-numeric-wrap k-state-default k-expand-padding">
+														<input aria-readonly="false" aria-disabled="false" style="display: inline;" tabindex="0" class="k-formatted-value text k-input" type="text"><input aria-readonly="false" aria-disabled="false" aria-valuenow="" aria-valuemin="1" style="display: none;" role="spinbutton" class="text k-input" data-bind="value:TicketLimit" data-role="numerictextbox" data-spinners="false" data-type="number" data-min="1" data-format="n0" data-decimals="0" data-nullorpositive-msg="Value, if entered, must be positive." name="TicketLimit" type="text">
+												<span style="display: none;" class="k-select"><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-n" title="Increase value">Increase value</span></span><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-s" title="Decrease value">Decrease value</span></span></span></span></span>
+												<span data-for="TicketLimit" class="k-invalid-msg">text</span>
+											</div>
+											<!-- control box end -->
+										</div>
+										</div>
+										<!-- controls row end -->
+										<!-- expandable holder begin -->
+										<div class="expandable-holder">
+											<!-- toggle begin -->
+											<input id="eb-toggle" class="eb-toggle" type="checkbox" />
+											<label for="eb-toggle" /><i>Show</i><i>Hide</i> advanced settings</label>
+											<!-- toggle end -->
+											<!-- expandable box begin -->
+											<div class="expandable-box">
+												<!-- col wrap begin -->
+												<div class="col-wrap">
+													<!-- col begin -->
+													<div class="col selling-dates">
+														<h3 class="controls-title">Tickets selling dates</h3>
+														<!-- range holder begin -->
+														<div class="range-holder">
+															<!-- control box begin -->
+															<div class="control-box">
+																<label>From</label>
+																<!-- controls begin -->
+																<div class="controls">
+																	<!-- control begin -->
+																	<span class="control">
+																		<span class="k-widget k-datepicker k-header" style="">
+																			<span class="k-picker-wrap k-state-default">
+																				<input aria-readonly="false" aria-disabled="false" aria-expanded="false" role="combobox" class="k-input" style="width: 100%;" data-role="datepicker" data-bind="value: today" type="text" placeholder="11/19/2014" />
+																				<span role="button" unselectable="on" class="k-select">
+																				<span unselectable="on" class="k-icon k-i-calendar">select</span>
+																			</span>
+																			</span>
+																		</span>
+																	</span>
+																	<!-- control end -->
+																	<!-- control begin -->
+																	<span class="control">
+																		<span class="k-widget k-timepicker k-header" style="">
+																			<span class="k-picker-wrap k-state-default">
+																				<input aria-readonly="false" aria-disabled="false" aria-expanded="false" role="combobox" class="k-input" style="width: 100%;" data-role="timepicker" data-bind="value: today" type="text" placeholder="02:00 AM" />
+																				<span role="button" unselectable="on" class="k-select">
+																					<span unselectable="on" class="k-icon k-i-clock">select</span>
+																				</span>
+																			</span>
+																		</span>
+																	</span>
+																	<!-- control end -->
+																</div>
+																<!-- controls end -->
+															</div>
+															<!-- control box end -->
+															<!-- control box begin -->
+															<div class="control-box">
+																<label>To</label>
+																<!-- controls begin -->
+																<div class="controls">
+																	<!-- control begin -->
+																	<span class="control">
+																		<span class="k-widget k-datepicker k-header" style="">
+																			<span class="k-picker-wrap k-state-default">
+																				<input aria-readonly="false" aria-disabled="false" aria-expanded="false" role="combobox" class="k-input" style="width: 100%;" data-role="datepicker" data-bind="value: today" type="text" placeholder="11/19/2014" />
+																				<span role="button" unselectable="on" class="k-select">
+																				<span unselectable="on" class="k-icon k-i-calendar">select</span>
+																			</span>
+																			</span>
+																		</span>
+																	</span>
+																	<!-- control end -->
+																	<!-- control begin -->
+																	<span class="control">
+																		<span class="k-widget k-timepicker k-header" style="">
+																			<span class="k-picker-wrap k-state-default">
+																				<input aria-readonly="false" aria-disabled="false" aria-expanded="false" role="combobox" class="k-input" style="width: 100%;" data-role="timepicker" data-bind="value: today" type="text" placeholder="02:00 AM" />
+																				<span role="button" unselectable="on" class="k-select">
+																					<span unselectable="on" class="k-icon k-i-clock">select</span>
+																				</span>
+																			</span>
+																		</span>
+																	</span>
+																	<!-- control end -->
+																</div>
+																<!-- controls end -->
+															</div>
+															<!-- control box end -->
+														</div>
+														<!-- range holder end -->
+													</div>
+													<!-- col end -->
+													<!-- col begin -->
+													<div class="col">
+														<h3 class="controls-title">Per person limit</h3>
+														<!-- group control box begin -->
+														<div class="group-control-box">
+															<!-- control box begin -->
+															<div class="control-box">
+																<label>min</label>
+																<input type="text" value="" class="text" placeholder="1" />
+															</div>
+															<!-- control box end -->
+															<!-- control box begin -->
+															<div class="control-box">
+																<label>max</label>
+																<input type="text" value="" class="text" placeholder="" />
+															</div>
+															<!-- control box end -->
+														</div>
+														<!-- group control box end -->
+													</div>
+													<!-- col end -->
+													<!-- col begin -->
+													<div class="col">
+														<h3 class="controls-title">Number of tickets claimed</h3>
+														<!-- switcher begin -->
+														<div class="switcher">
+															<span>Show</span>
+															<input id="show-num-ticket" type="checkbox" class="switch" />
+															<label for="show-num-ticket" />Show the number of tickets claimed</label>
+															<span>Hide</span>
+														</div>
+														<!-- switcher end -->
+													</div>
+													<!-- col end -->
+												</div>
+												<!-- col wrap end -->
+											</div>
+											<!-- expandable box end -->
+										</div>
+										<!-- expandable holder end -->
+										<!-- button begin -->
+										<div class="button"><a href="#">Add</a></div>
+										<!-- button end -->
+									</div>
+									<!-- popup content end -->
+								</div>
+								<!-- popup holder end -->
+							</div>
+							<!-- tickets holder end -->
+							<!-- add info holder begin -->
+							<div class="add-info-holder">
+								<!-- text editor holder begin -->
+								<div class="text-editor-holder">
+                    <table style="height: 350px;" class="k-widget k-editor k-header k-editor-widget" role="presentation" cellpadding="0" cellspacing="4"><tbody><tr role="presentation"><td class="k-editor-toolbar-wrap" role="presentation"><ul data-role="editortoolbar" class="k-editor-toolbar" role="toolbar"><li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start k-group-end" unselectable="on" title="Heading"><span unselectable="on" class="k-tool-icon k-heading">Heading</span></a></li><li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Bold"><span unselectable="on" class="k-tool-icon k-bold">Bold</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Italic"><span unselectable="on" class="k-tool-icon k-italic">Italic</span></a></li><li class="k-tool-group" role="presentation"><div style="" data-role="colorpicker" class="k-colorpicker k-foreColor k-group-start"></div><span unselectable="on" title="Color" aria-label="Current selected color is #000000" tabindex="0" aria-disabled="false" role="textbox" aria-haspopup="true" class="k-widget k-colorpicker k-header k-editor-widget"><span unselectable="on" class="k-picker-wrap k-state-default"><span unselectable="on" class="k-tool-icon k-foreColor"><span unselectable="on" style="background-color: rgb(0, 0, 0);" class="k-selected-color"></span></span><span class="k-select" unselectable="on"><span class="k-icon k-i-arrow-s" unselectable="on"></span></span></span></span><div style="" data-role="colorpicker" class="k-colorpicker k-backColor"></div><span unselectable="on" title="Background color" aria-label="Current selected color is #000000" tabindex="0" aria-disabled="false" role="textbox" aria-haspopup="true" class="k-widget k-colorpicker k-header k-editor-widget k-group-end"><span unselectable="on" class="k-picker-wrap k-state-default"><span unselectable="on" class="k-tool-icon k-backColor"><span unselectable="on" style="background-color: rgb(0, 0, 0);" class="k-selected-color"></span></span><span class="k-select" unselectable="on"><span class="k-icon k-i-arrow-s" unselectable="on"></span></span></span></span></li><li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Insert unordered list"><span unselectable="on" class="k-tool-icon k-insertUnorderedList">Insert unordered list</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Insert ordered list"><span unselectable="on" class="k-tool-icon k-insertOrderedList">Insert ordered list</span></a></li><li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start" unselectable="on" title="Insert image"><span unselectable="on" class="k-tool-icon k-insertImage">Insert Image</span></a><a href="" role="button" class="k-tool k-group-end" unselectable="on" title="Insert hyperlink"><span unselectable="on" class="k-tool-icon k-createLink">Create Link</span></a><a style="display: none;" href="" role="button" class="k-tool k-group-end k-state-disabled" unselectable="on" title="Remove hyperlink"><span unselectable="on" class="k-tool-icon k-unlink">Remove Link</span></a></li><li class="k-tool-group k-button-group" role="presentation"><a href="" role="button" class="k-tool k-group-start k-group-end" unselectable="on" title="View HTML"><span unselectable="on" class="k-tool-icon k-viewHtml">View HTML</span></a></li></ul></td></tr><tr><td class="k-editable-area"><iframe src="javascript:&quot;&quot;" class="k-content" frameborder="0"></iframe><textarea class="k-content k-raw-content" autocomplete="off" name="Description" data-role="customeditor" data-encode="false" data-bind="value:eventSettings.Description" required validationmessage="Details about your event are required." style="height: 350px; display: none;"></textarea></td></tr></tbody></table>
+                    <span data-for="Description" class="k-invalid-msg"></span>
+                </div>
+								<!-- text editor holder end -->
+								<!-- event website begin -->
+								<div class="event-website" data-role="contenteditable" data-placeholder="Event website link goes here" data-bind="value: eventSettings.Disclaimer" contenteditable="true"><spTickets selling datesan class="placeholder">Event website link goes here</span></div>
+								<!-- event website end -->
+								<!-- social links begin -->
+								<div class="social-links">
+									<ul>
+										<li class="ico-facebook opened">
+											<a target="_blank" href="#" rel="nofollow"><i>facebook</i></a>
+											<!-- link editor popup begin -->
+											<div class="link-editor-popup">
+												<input type="text" class="text" value="" />
+												<i class="btn-close"></i>
+											</div>
+											<!-- link editor end -->
+										</li>
+										<li class="ico-twitter">
+											<a target="_blank" href="#" rel="nofollow"><i>twitter</i></a>
+											<!-- link editor popup begin -->
+											<div class="link-editor-popup">
+												<input type="text" class="text" value="" />
+												<i class="btn-close"></i>
+											</div>
+											<!-- link editor end -->
+										</li>
+										<li class="ico-linkedin not-filled">
+											<a target="_blank" href="#" rel="nofollow"><i>linkedin</i></a>
+											<!-- link editor popup begin -->
+											<div class="link-editor-popup">
+												<input type="text" class="text" value="" />
+												<i class="btn-close"></i>
+											</div>
+											<!-- link editor end -->
+										</li>
+										<li class="ico-youtube not-filled">
+											<a target="_blank" href="#" rel="nofollow"><i>youtube</i></a>
+											<!-- link editor popup begin -->
+											<div class="link-editor-popup">
+												<input type="text" class="text" value="" />
+												<i class="btn-close"></i>
+											</div>
+											<!-- link editor end -->
+										</li>
+										<li class="ico-google-plus not-filled">
+											<a target="_blank" href="#" rel="nofollow"><i>google-plus</i></a>
+											<!-- link editor popup begin -->
+											<div class="link-editor-popup">
+												<input type="text" class="text" value="" />
+												<i class="btn-close"></i>
+											</div>
+											<!-- link editor end -->
+										</li>
+										<li class="ico-vimeo not-filled">
+											<a target="_blank" href="#" rel="nofollow"><i>vimeo</i></a>
+											<!-- link editor popup begin -->
+											<div class="link-editor-popup">
+												<input type="text" class="text" value="" />
+												<i class="btn-close"></i>
+											</div>
+											<!-- link editor end -->
+										</li>
+									</ul>
+								</div>
+								<!-- social links end -->
+								<!-- sponsors begin -->
+								<div class="sponsors">
+									<h3>Sponsors:</h3>
+									<!-- sponsors list begin -->
+									<ul class="sponsor-list">
+										<!-- sponsors item begin -->
+										<li class="sponsor-item">
+											<!-- dropbox begin -->
+											<div class="dropbox">
+												<div class="dropbox-inner">
+													<img src="images/sponsors/sponsor-01.jpg" height="110" alt="" />
+													<a href="#" target="_blank" rel="nofollow" class="btn-close"></a>
+												</div>
+											</div>
+											<!-- dropbox end -->
+											<div class="sponsor-description" data-role="contenteditable" data-placeholder="Description" data-bind="value: Description" contenteditable="true"><span class="placeholder">Description</span></div>
+										</li>
+										<!-- sponsors item end -->
+										<!-- sponsors item begin -->
+										<li class="sponsor-item">
+											<!-- dropbox begin -->
+											<div class="dropbox">
+												<div class="dropbox-inner">
+													<img src="images/sponsors/sponsor-01.jpg" height="90" alt="" />
+													<a href="#" target="_blank" rel="nofollow" class="btn-close"></a>
+												</div>
+											</div>
+											<!-- dropbox end -->
+											<div class="sponsor-description" data-role="contenteditable" data-placeholder="Description" data-bind="value: Description" contenteditable="true"><span class="placeholder">Description</span></div>
+										</li>
+										<!-- sponsors item end -->
+										<!-- sponsors item begin -->
+										<li class="sponsor-item">
+											<!-- dropbox begin -->
+											<div class="dropbox">
+												<div class="dropbox-inner">
+													<span class="text-default"><i class="text-desctop">Drag &amp; drop logo here</i><i class="text-mobile">Upload logo</i></span>
+												</div>
+											</div>
+											<!-- dropbox end -->
+											<div class="sponsor-description" data-role="contenteditable" data-placeholder="Description" data-bind="value: Description" contenteditable="true"><span class="placeholder">Description</span></div>
+										</li>
+										<!-- sponsors item end -->
+									</ul>
+									<!-- sponsors list end -->
+								</div>
+								<!-- sponsors end -->
+							</div>
+							<!-- add info holder end -->
+						</div>
+						<!-- wrap begin -->
+					</div>
+					<!-- inner end -->
+					<!-- event footer begin -->
+					<footer class="event-footer">
+						<!-- inner begin -->
+						<div class="inner">
+							<p data-role="contenteditable" data-placeholder="Disclaimer text here. Let your guests know about any terms and conditions." data-bind="value: eventSettings.Disclaimer" contenteditable="true"><span class="placeholder">Disclaimer text here. Let your guests know about any terms and conditions.</span></p>
+						</div>
+						<!-- inner end -->
+					</footer>
+					<!-- event footer end -->
+				</div>
+				<!-- content end -->
+			</div>
+			<!-- event editor end -->
+			<!-- event body begin -->
+			<div class="event-body tickets-extended">
+				<!-- top section begin -->
+				<div class="top-section">
+					<div class="button edit-button"><a href="#" id="btn-edit">Edit</a></div>
+					<!-- event holder begin -->
+					<div class="event-holder">
+						<!-- inner begin -->
+						<div class="inner">
+							<!-- event wrap begin -->
+							<div class="event-wrap">
+								<!-- event main info begin -->
+								<div class="event-main-info">
+									<!-- event title begin -->
+									<h1 class="event-main-title">Add your event title here</h1>
+									<!-- event title end -->
+									<!-- event summary begin -->
+									<div class="event-summary">Leading experts in 3D graphics, special effects, video post-production</div>
+									<!-- event summary end -->
+								</div>
+								<!-- event main info end -->
+								<!-- date/time/location holder begin -->
+								<div class="dtl-holder empty-location">
+									<div class="dtl-inner">
+										<!-- date time holder begin -->
+										<div class="date-time-holder">
+											<div class="date-time-inner">
+												<!-- date holder begin -->
+												<div class="date-holder btn-popup-settings" data-popup="popup-date">
+													<!-- date start begin -->
+													<div class="start" data-bind="click:openDatePopup">
+														<span data-bind="text: startDateDayText"><i>Dec</i> <span class="date-day">03</span></span>
+													</div>
+													<!-- date start end -->
+													<!-- date end begin -->
+													<div class="end" data-bind="click:openDatePopup, visible: isEndDateVisible">
+														<span data-bind="text: endDateDayText"><i>Mar</i> <span class="date-day">03</span></span>
+													</div>
+													<!-- date end end -->
+												</div>
+												<!-- date holder end -->
+												<!-- time holder begin -->
+												<div class="time-holder btn-popup-settings" data-popup="popup-time">
+													<!-- time start begin -->
+													<div class="start" data-bind="click:openTimePopup"><span data-bind="text: startDateTimeText">12:45 <i class="time-zone">PM</i></span></div>
+													<!-- time start end -->
+													<!-- time end begin -->
+													<div class="end editable" data-bind="click:openTimePopup, visible: isEndDateVisible"><span data-bind="text: endDateTimeText">2:45 <i class="time-zone">PM</i></span></div>
+													<!-- time end end -->
+												</div>
+												<!-- time holder end -->
+											</div>
+										</div>
+										<!-- date time holder begin -->
+										<!-- location holder begin -->
+										<div class="location-holder">
+											<!-- venue begin -->
+											<div class="venue">
+												<h3><span class="icon">Miss T’s bakery</span></h3>
+											</div>
+											<!-- venue end -->
+											<!-- address begin -->
+											<div class="address">
+												<address>1698 W Adele St, Vancouver, British Columbia, Canada</address>
+											</div>
+											<!-- address end -->
+											<a href="#" class="btn-popup-settings show-map" data-popup="popup-map">Show map</a>
+										</div>
+										<!-- location holder end -->
+									</div>
+								</div>
+								<!-- date/time/location holder end -->
+								<!-- location popup settings holder -->
+								<div id="popup-map" class="popup-settings-holder popup-map">
+									<a href="#" class="btn-close"></a>
+									<div class="popup-settings-inner">
+										<div class="popup-settings-wrap">
+											<!-- map holder begin -->
+											
+											<!-- map holder en -->
+										</div>
+									</div>
+								</div>
+								<!-- location popup settings end -->
+							</div>
+							<!-- event wrap end -->
+						</div>
+						<!-- inner end -->
+					</div>
+					<!-- event holder end -->
+					<!-- cover begin -->
+					<div class="cover" style="background-image:url(images/cover-05.jpg)"></div>
+					<!-- cover end -->
+				</div>
+				<!-- top section end -->
+				<!-- content begin -->
+				<div class="content" role="main">
+					<!-- inner begin -->
+					<div class="inner">
+						<!-- wrap begin -->
+						<div class="wrap">
+							<!-- tickets holder begin -->
+							<div class="tickets-holder">
+								<!-- tickets inner begin -->
+								<div class="tickets-inner">
+									<!-- ticket container begin -->
+									<div class="ticket-container">
+										<!-- ticket list begin -->
+										<ul class="ticket-list">
+											<!-- ticket item begin -->
+											<li class="ticket-item">
+												<!-- ticket wrap begin -->
+												<div class="ticket-wrap">
+													<!-- ticket main info begin -->
+													<div class="ticket-main-info">
+														<div class="ticket-price">$10.00</div>
+														<dl>
+															<dt>Admission + CD</dt>
+															<dd>Special limited</dd>
+														</dl>
+													</div>
+													<!-- ticket main info end -->
+													<!-- ticket sub info begin -->
+													<div class="ticket-sub-info">
+														<!-- icons menu begin -->
+														<ul class="icons-menu">
+															<li><a href="#" class="ico-edit" rel="nofollow">edit</a></li>
+															<li><a href="#" class="ico-visibility" rel="nofollow">visibility</a></li>
+															<li><a href="#" class="ico-delete" rel="nofollow">delete</a></li>
+														</ul>
+														<!-- icons menu end -->
+														<span>900 sold</span>
+													</div>
+													<!-- ticket sub info end -->
+												</div>
+												<!-- ticket wrap end -->
+												<!-- reorder begin -->
+												<span class="ico-reorder"></span>
+												<!-- reorder end -->
+												<!-- message begin -->
+												<div class="message">
+													<div class="message-wrap">
+														<div class="message-inner">
+															<p>Ticket was deleted. <a href="#" class="undo-delete">Undo delete</a></p>
+														</div>
+													</div>
+												</div>
+												<!-- message end -->
+											</li>
+											<!-- ticket item end -->
+										</ul>
+										<!-- ticket list end -->
+										<!--<a href="#" class="toggle-link-expand">Show all tickets</a>
+										<a href="#" class="toggle-link-collapse">Hide all tickets</a>-->
+									</div>
+									<!-- ticket container end -->
+									<!-- ticket action holder begin -->
+									<div class="ticket-action-holder">
+										<span id="open-tickets">Event tickets here</span>
+										<div class="button">
+											<a href="#" id="addTicketBtn" rel="nofollow">Add</a>
+										</div>
+									</div>
+									<!-- ticket action holder end -->
+								</div>
+								<!-- tickets inner end -->
+								<!-- popup holder begin -->
+								<div class="popup-holder" id="popupAddTicket">
+									<!-- popup header begin -->
+									<div class="popup-header k-window-titlebar">
+										<!-- switcher begin -->
+										<div class="switcher">
+											<span>Add tickets</span>
+											<input id="add-tickets" type="checkbox" class="switch" checked />
+											<label for="add-tickets" /></label>
+											<span>Add add-ons</span>
+										</div>
+										<!-- switcher end -->
+										<a href="#" class="btn-close btn-close-popup"></a>
+									</div>
+									<!-- popup header end -->
+									<!-- popup content begin -->
+									<div class="popup-content">
+										<!-- controls row begin -->
+										<div class="controls-row">
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>Title</label>
+												<input aria-invalid="true" class="text k-invalid" name="Name" data-bind="value:Name" required validationmessage="Title is required" type="text">
+												<span role="alert" id="Name_validationMessage" data-valmsg-for="Name" data-for="Name" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg field-validation-error"><span class="k-icon k-warning"> </span> Title is required</span>
+											</div>
+											<!-- control box end -->
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>Description</label>
+												<input type="text" value="" class="text" placeholder="For those who buy in advance" />
+											</div>
+											<!-- control box end -->
+											<!-- control box begin -->
+											<div class="group-control-box">
+												<div class="control-box">
+													<label>Price</label>
+													<span class="k-widget k-numerictextbox text" style=""><span class="k-numeric-wrap k-state-default k-expand-padding"><input aria-readonly="false" aria-disabled="false" style="display: inline;" tabindex="0" class="k-formatted-value text k-input" type="text"><input aria-readonly="false" aria-disabled="false" aria-valuenow="" aria-valuemin="0" style="display: none;" role="spinbutton" class="text k-input" data-bind="value:Price" data-role="numerictextbox" data-spinners="false" data-type="number" data-min="0" data-format="c0" name="Price" required validationmessage="Price is required" type="text"><span style="display: none;" class="k-select"><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-n" title="Increase value">Increase value</span></span><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-s" title="Decrease value">Decrease value</span></span></span></span></span>
+												<span class="k-invalid-msg" data-for="Price"></span>
+											</div>
+											<!-- control box end -->
+											<!-- control box begin -->
+											<div class="control-box">
+												<label>Q-ty</label>
+												<span class="k-widget k-numerictextbox text" style="">
+													<span class="k-numeric-wrap k-state-default k-expand-padding">
+														<input aria-readonly="false" aria-disabled="false" style="display: inline;" tabindex="0" class="k-formatted-value text k-input" type="text"><input aria-readonly="false" aria-disabled="false" aria-valuenow="" aria-valuemin="1" style="display: none;" role="spinbutton" class="text k-input" data-bind="value:TicketLimit" data-role="numerictextbox" data-spinners="false" data-type="number" data-min="1" data-format="n0" data-decimals="0" data-nullorpositive-msg="Value, if entered, must be positive." name="TicketLimit" type="text">
+												<span style="display: none;" class="k-select"><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-n" title="Increase value">Increase value</span></span><span unselectable="on" class="k-link"><span unselectable="on" class="k-icon k-i-arrow-s" title="Decrease value">Decrease value</span></span></span></span></span>
+												<span data-for="TicketLimit" class="k-invalid-msg">text</span>
+											</div>
+											<!-- control box end -->
+										</div>
+										</div>
+										<!-- controls row end -->
+										<!-- expandable holder begin -->
+										<div class="expandable-holder">
+											<!-- toggle begin -->
+											<input id="eb-toggle" class="eb-toggle" type="checkbox" />
+											<label for="eb-toggle" /><i>Show</i><i>Hide</i> advanced settings</label>
+											<!-- toggle end -->
+											<!-- expandable box begin -->
+											<div class="expandable-box">
+												<!-- col wrap begin -->
+												<div class="col-wrap">
+													<!-- col begin -->
+													<div class="col selling-dates">
+														<h3 class="controls-title">Tickets selling dates</h3>
+														<!-- range holder begin -->
+														<div class="range-holder">
+															<!-- control box begin -->
+															<div class="control-box">
+																<label>From</label>
+																<!-- controls begin -->
+																<div class="controls">
+																	<!-- control begin -->
+																	<span class="control">
+																		<span class="k-widget k-datepicker k-header" style="">
+																			<span class="k-picker-wrap k-state-default">
+																				<input aria-readonly="false" aria-disabled="false" aria-expanded="false" role="combobox" class="k-input" style="width: 100%;" data-role="datepicker" data-bind="value: today" type="text" placeholder="11/19/2014" />
+																				<span role="button" unselectable="on" class="k-select">
+																				<span unselectable="on" class="k-icon k-i-calendar">select</span>
+																			</span>
+																			</span>
+																		</span>
+																	</span>
+																	<!-- control end -->
+																	<!-- control begin -->
+																	<span class="control">
+																		<span class="k-widget k-timepicker k-header" style="">
+																			<span class="k-picker-wrap k-state-default">
+																				<input aria-readonly="false" aria-disabled="false" aria-expanded="false" role="combobox" class="k-input" style="width: 100%;" data-role="timepicker" data-bind="value: today" type="text" placeholder="02:00 AM" />
+																				<span role="button" unselectable="on" class="k-select">
+																					<span unselectable="on" class="k-icon k-i-clock">select</span>
+																				</span>
+																			</span>
+																		</span>
+																	</span>
+																	<!-- control end -->
+																</div>
+																<!-- controls end -->
+															</div>
+															<!-- control box end -->
+															<!-- control box begin -->
+															<div class="control-box">
+																<label>To</label>
+																<!-- controls begin -->
+																<div class="controls">
+																	<!-- control begin -->
+																	<span class="control">
+																		<span class="k-widget k-datepicker k-header" style="">
+																			<span class="k-picker-wrap k-state-default">
+																				<input aria-readonly="false" aria-disabled="false" aria-expanded="false" role="combobox" class="k-input" style="width: 100%;" data-role="datepicker" data-bind="value: today" type="text" placeholder="11/19/2014" />
+																				<span role="button" unselectable="on" class="k-select">
+																				<span unselectable="on" class="k-icon k-i-calendar">select</span>
+																			</span>
+																			</span>
+																		</span>
+																	</span>
+																	<!-- control end -->
+																	<!-- control begin -->
+																	<span class="control">
+																		<span class="k-widget k-timepicker k-header" style="">
+																			<span class="k-picker-wrap k-state-default">
+																				<input aria-readonly="false" aria-disabled="false" aria-expanded="false" role="combobox" class="k-input" style="width: 100%;" data-role="timepicker" data-bind="value: today" type="text" placeholder="02:00 AM" />
+																				<span role="button" unselectable="on" class="k-select">
+																					<span unselectable="on" class="k-icon k-i-clock">select</span>
+																				</span>
+																			</span>
+																		</span>
+																	</span>
+																	<!-- control end -->
+																</div>
+																<!-- controls end -->
+															</div>
+															<!-- control box end -->
+														</div>
+														<!-- range holder end -->
+													</div>
+													<!-- col end -->
+													<!-- col begin -->
+													<div class="col">
+														<h3 class="controls-title">Per person limit</h3>
+														<!-- group control box begin -->
+														<div class="group-control-box">
+															<!-- control box begin -->
+															<div class="control-box">
+																<label>min</label>
+																<input type="text" value="" class="text" placeholder="1" />
+															</div>
+															<!-- control box end -->
+															<!-- control box begin -->
+															<div class="control-box">
+																<label>max</label>
+																<input type="text" value="" class="text" placeholder="" />
+															</div>
+															<!-- control box end -->
+														</div>
+														<!-- group control box end -->
+													</div>
+													<!-- col end -->
+													<!-- col begin -->
+													<div class="col">
+														<h3 class="controls-title">Number of tickets claimed</h3>
+														<!-- switcher begin -->
+														<div class="switcher">
+															<span>Show</span>
+															<input id="show-num-ticket" type="checkbox" class="switch" />
+															<label for="show-num-ticket" />Show the number of tickets claimed</label>
+															<span>Hide</span>
+														</div>
+														<!-- switcher end -->
+													</div>
+													<!-- col end -->
+												</div>
+												<!-- col wrap end -->
+											</div>
+											<!-- expandable box end -->
+										</div>
+										<!-- expandable holder end -->
+										<!-- button begin -->
+										<div class="button"><a href="#">Add</a></div>
+										<!-- button end -->
+									</div>
+									<!-- popup content end -->
+								</div>
+								<!-- popup holder end -->
+							</div>
+							<!-- tickets holder end -->
+							<!-- add info holder begin -->
+							<div class="add-info-holder">
+								<!-- event content begin -->
+								<div class="event-content">
+									<h1>The biggest housing rally in a generation</h1>
+									<p>Is set to <a href="#">take place</a> on 17 March 2015.  Organised by Homes for Britain, the united voice for housing, the event will bring together 2,500 people in the heart of Westminster to call for 'an end to the housing crisis within a generation'.</p>
+									<ul>
+										<li>Invited speakers include the leaders of Britain's main political parties, as well as those from across the worlds of housing, finance and even the entertainment industry.</li>
+										<li>So get your homemade placards at the ready! We want people from all across the country to come and ensure that our voice is heard.</li>
+									</ul>
+									<div class="img-holder"><img src="images/img-01.jpg" alt="" /></div>
+								</div>
+								<!-- event content end -->
+								<!-- event website begin -->
+								<div class="event-website"><a href="#">example.com</a></div>
+								<!-- event website end -->
+								<!-- social links begin -->
+								<div class="social-links">
+									<ul>
+										<li class="ico-facebook"><a target="_blank" href="#" rel="nofollow"><i>facebook</i></a></li>
+										<li class="ico-twitter"><a target="_blank" href="#" rel="nofollow"><i>twitter</i></a></li>
+										<li class="ico-linkedin"><a target="_blank" href="#" rel="nofollow"><i>linkedin</i></a></li>
+									</ul>
+								</div>
+								<!-- social links end -->
+								<!-- likely begin -->
+								<div class="likely">
+									<div class="twitter" data-via="ilyabirmannet">Tweet</div>
+									<div class="facebook">Share</div>
+								</div>
+								<!-- likely end -->
+								<!-- sponsors begin -->
+								<div class="sponsors">
+									<h3>Sponsors:</h3>
+									<!-- sponsors list begin -->
+									<ul class="sponsor-list">
+										<!-- sponsors item begin -->
+										<li class="sponsor-item">
+											<!-- sponsor image begin -->
+											<div class="sponsor-image">
+												<div class="sponsor-image-inner">
+													<img src="images/sponsors/sponsor-01.jpg" alt="" />
+												</div>
+											</div>
+											<!-- sponsor image end -->
+											<div class="sponsor-description">Description</div>
+										</li>
+										<!-- sponsors item end -->
+									</ul>
+									<!-- sponsors list end -->
+								</div>
+								<!-- sponsors end -->
+							</div>
+							<!-- add info holder end -->
+						</div>
+						<!-- wrap begin -->
+					</div>
+					<!-- inner end -->
+					<!-- event footer begin -->
+					<div class="event-footer">
+						<!-- inner begin -->
+						<div class="inner">
+							<p>18+ only!</p>
+						</div>
+						<!-- inner end -->
+					</div>
+					<!-- event footer end -->
+				</div>
+				<!-- content end -->
+			</div>
+			<!-- event body end -->
+		</div>
+		<!-- event creator end -->
+	</div>
+	<!-- site body end -->
+	<!-- footer begin -->
+	<footer id="footer">
+		<div class="inner">
+			<!-- copyright begin -->
+			<div class="copyright">
+				<div class="power-by">
+					<span>Powered by</span>
+					<a href="#" class="logo-checkbox"><img src="svg/eventnut-logo.svg" alt="EventNut" /></a>
+				</div>
+				<p>&copy; 2014 EventNut, Inc</p>
+			</div>
+			<!-- copyright end -->
+		</div>
+	</footer>
+	<!-- footer end -->
+	<!-- alert begin -->
+	<div class="alert wrong">
+		<div class="inner">
+			Badge was successfully sent to printer
+			<i class="btn-close"></i>
+		</div>
+	</div>
+	<!-- alert end -->
+</body>
+</html>
